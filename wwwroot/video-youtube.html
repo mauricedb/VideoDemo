@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Using YouTube</title>
+    <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>YouTube using VideoJS</h1>
+
+    <video id="video-player"
+           class="video-js vjs-default-skin"
+           data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=Q4-OP3QhLbw"}] }'
+           controls
+           height="600"
+           width="1200"
+           autoplay
+           muted>
+    </video>
+
+    <script src="https://cdn.jsdelivr.net/npm/video.js@7.8.4/dist/video.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-youtube@2.6.1/dist/Youtube.js"></script>
+</body>
+</html>

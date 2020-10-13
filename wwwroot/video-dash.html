@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Using DASH</title>
+</head>
+<body>
+    <h1>Adaptive streaming using DASH and Shaka player</h1>
+
+    <video id="video-player"
+           class="video-js vjs-default-skin"
+           controls
+           height="600"
+           width="1200"
+           autoplay
+           muted>
+
+    </video>
+
+    <ul id="videoTracks" />
+
+    <script src="https://cdn.jsdelivr.net/npm/shaka-player@3.0.4/dist/shaka-player.compiled.min.js"></script>
+
+    <script>
+        function initPlayer() {
+            // Install polyfills.
+            shaka.polyfill.installAll();
+            var video = document.getElementById('video-player');
+            var player = new shaka.Player(video);
+
+            player.load('/video/dash/storybook.mpd').then(function () {
+                // Add track info to the DOM.
+                var ul = document.getElementById('videoTracks');
+
+                setInterval(() => {
+                    var videoTracks = player.getVariantTracks();
+
+                    ul.innerHTML = ''
+                    for (var i = 0; i < videoTracks.length; ++i) {
+                        var track = videoTracks[i];
+
+                        var text = track.width + ' x ' + track.height;
+                        text += ' ' + (track.bandwidth / 1024).toFixed(0) + ' kbits/s';
+                        if (track.active) {
+                            text += ' <== playing'
+                        }
+
+                        var li = document.createElement('li');
+                        li.textContent = text;
+                        ul.appendChild(li);
+                    };
+                }, 1000)
+            });
+            //player.load('https://s3.amazonaws.com/_bc_dml/example-content/sintel_dash/sintel_vod.mpd');
+        }
+
+
+            document.addEventListener('DOMContentLoaded', initPlayer);
+    </script>
+</body>
+</html>
