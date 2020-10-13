@@ -2,10 +2,10 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Self hosted with DASH</title>
+    <title>Streaming Azure Media Service and DASH</title>
 </head>
 <body>
-    <h1>Streaming self hosted with DASH and Shaka player</h1>
+    <h1>Streaming Azure Media Service and DASH and Shaka player</h1>
 
     <video id="video-player"
            class="video-js vjs-default-skin"
@@ -14,7 +14,6 @@
            width="1200"
            autoplay
            muted>
-
     </video>
 
     <ul id="videoTracks" />
@@ -28,8 +27,7 @@
             var video = document.getElementById('video-player');
             var player = new shaka.Player(video);
 
-
-            player.load('/video/dash/storybook.mpd').then(function () {
+            player.load('https://videodemomdb-euwe.streaming.media.azure.net/3d7ee8e6-3ff3-4acc-9783-29abdb9cc2dd/storybook.ism/manifest(format=mpd-time-cmaf)').then(function () {
                 // Add track info to the DOM.
                 var ul = document.getElementById('videoTracks');
 
@@ -55,7 +53,7 @@
         }
 
 
-            document.addEventListener('DOMContentLoaded', initPlayer);
+        document.addEventListener('DOMContentLoaded', initPlayer);
     </script>
 </body>
 </html>
