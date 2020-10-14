@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Self hosted with DASH</title>
+    <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
 </head>
 <body>
     <h1>Streaming self hosted with DASH and Shaka player</h1>
@@ -14,13 +15,11 @@
            width="1200"
            autoplay
            muted>
-
     </video>
 
     <ul id="videoTracks" />
 
     <script src="https://cdn.jsdelivr.net/npm/shaka-player@3.0.4/dist/shaka-player.compiled.min.js"></script>
-
     <script>
         function initPlayer() {
             // Install polyfills.
@@ -54,8 +53,7 @@
             });
         }
 
-
-            document.addEventListener('DOMContentLoaded', initPlayer);
+        document.addEventListener('DOMContentLoaded', initPlayer);
     </script>
 </body>
 </html>
